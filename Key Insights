@@ -1,0 +1,79 @@
+📊 Key Insights
+📊 Key Insights
+1️⃣ Overall Company Performance
+
+The company generated a total revenue of $3,787,215.90.
+
+This indicates strong overall sales performance across all regions and product categories.
+
+From a business perspective, the dataset reflects a mid-scale e-commerce operation with significant transactional activity.
+
+2️⃣ Geographic Performance
+🔝 Top Performing States
+State	Revenue
+TX	$960,239.55
+CA	$745,449.23
+CO	$212,790.26
+
+🧠 Insight:
+
+Texas (TX) is the dominant revenue-generating state, contributing approximately 25% of total revenue.
+
+California also plays a major role in performance.
+
+Revenue is highly concentrated in top regions, suggesting possible geographic dependency.
+
+📌 Business Implication:
+Marketing investment and logistics optimization should prioritize TX and CA.
+
+3️⃣ Product Performance
+🔝 Top Products by Revenue
+Product	Revenue
+Kids Toy Car	$97,790.85
+Projector Mini	$96,287.86
+Puzzle 1000pc	~$95,000
+
+🧠 Insight:
+
+Revenue is distributed across multiple strong products rather than one dominant item.
+
+Top products are closely competing, indicating diversified demand.
+
+The product mix includes both electronics and toys, suggesting multi-segment customer targeting.
+
+📌 Business Implication:
+Inventory management should ensure consistent stock levels for top-performing SKUs.
+
+4️⃣ Payment Behavior
+
+Most used payment method: Credit Card
+
+Total transactions via Credit Card: 1,397 orders
+
+🧠 Insight:
+
+Customers strongly prefer digital payments.
+
+Checkout optimization and fraud monitoring should prioritize card-based transactions.
+
+5️⃣ Revenue Distribution Pattern
+
+Total revenue is diversified across states and products.
+
+No single product dominates overall performance.
+
+Revenue concentration exists geographically (TX & CA).
+
+This indicates a healthy but regionally skewed revenue structure.
+
+🎯 Analyst Reflection
+
+This analysis demonstrates the ability to:
+
+Translate business questions into SQL logic
+
+Identify revenue concentration patterns
+
+Compare product-level vs geographic-level performance
+
+Extract actionable business insights from raw transactional data
