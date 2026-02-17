@@ -1,123 +1,132 @@
-ecommerce_analysis.sql
--- ============================================
--- E-Commerce Sales Performance Analysis
--- ============================================
+-- =====================================================
+-- E-Commerce Sales Analysis
+-- Author: Milad
+-- Database: ecommerce_analytics
+-- =====================================================
 
--- Use database
 USE ecommerce_analytics;
 
--- ============================================
--- 1. Company Overview
--- ============================================
+-- =====================================================
+-- 1. Total Revenue
+-- =====================================================
 
--- Total Revenue
-SELECT SUM(TotalAmount) AS total_revenue
+SELECT SUM(TotalAmount) AS Total_Revenue
 FROM orders;
 
--- Total Orders
-SELECT COUNT(*) AS total_orders
+
+-- =====================================================
+-- 2. Total Orders
+-- =====================================================
+
+SELECT COUNT(*) AS Total_Orders
 FROM orders;
 
--- Average Order Value
-SELECT AVG(TotalAmount) AS avg_order_value
-FROM orders;
 
--- ============================================
--- 2. Revenue by Geography
--- ============================================
+-- =====================================================
+-- 3. Revenue by State
+-- =====================================================
 
--- Revenue by State
 SELECT State,
-       SUM(TotalAmount) AS total_revenue
+       SUM(TotalAmount) AS State_Revenue
 FROM orders
 GROUP BY State
-ORDER BY total_revenue DESC;
+ORDER BY State_Revenue DESC;
 
--- Revenue by City
-SELECT City,
-       SUM(TotalAmount) AS total_revenue
+
+-- =====================================================
+-- 4. Revenue by Country
+-- =====================================================
+
+SELECT Country,
+       SUM(TotalAmount) AS Country_Revenue
 FROM orders
-GROUP BY City
-ORDER BY total_revenue DESC;
+GROUP BY Country
+ORDER BY Country_Revenue DESC;
 
--- ============================================
--- 3. Product Intelligence
--- ============================================
 
--- Top 5 Products by Revenue
-SELECT ProductName,
-       SUM(TotalAmount) AS product_revenue
-FROM orders
-GROUP BY ProductName
-ORDER BY product_revenue DESC
-LIMIT 5;
+-- =====================================================
+-- 5. Revenue by Category
+-- =====================================================
 
--- Top 5 Products by Quantity Sold
-SELECT ProductName,
-       SUM(Quantity) AS total_units_sold
-FROM orders
-GROUP BY ProductName
-ORDER BY total_units_sold DESC
-LIMIT 5;
-
--- Average Price per Product
-SELECT ProductName,
-       AVG(UnitPrice) AS avg_price
-FROM orders
-GROUP BY ProductName
-ORDER BY avg_price DESC;
-
--- ============================================
--- 4. Category Performance
--- ============================================
-
--- Revenue by Category
 SELECT Category,
-       SUM(TotalAmount) AS total_revenue
+       SUM(TotalAmount) AS Category_Revenue
 FROM orders
 GROUP BY Category
-ORDER BY total_revenue DESC;
+ORDER BY Category_Revenue DESC;
 
--- Average Discount by Category
-SELECT Category,
-       AVG(Discount) AS avg_discount
-FROM orders
-GROUP BY Category
-ORDER BY avg_discount DESC;
 
--- Total Tax Collected by Category
-SELECT Category,
-       SUM(Tax) AS total_tax
-FROM orders
-GROUP BY Category
-ORDER BY total_tax DESC;
+-- =====================================================
+-- 6. Revenue by Payment Method
+-- =====================================================
 
--- ============================================
--- 5. Payment & Order Analysis
--- ============================================
-
--- Revenue by Payment Method
 SELECT PaymentMethod,
-       SUM(TotalAmount) AS total_revenue
+       SUM(TotalAmount) AS Payment_Revenue
 FROM orders
 GROUP BY PaymentMethod
-ORDER BY total_revenue DESC;
+ORDER BY Payment_Revenue DESC;
 
--- Order Status Distribution
-SELECT OrderStatus,
-       COUNT(*) AS total_orders
+
+-- =====================================================
+-- 7. Top 5 Products by Revenue
+-- =====================================================
+
+SELECT ProductName,
+       SUM(TotalAmount) AS Product_Revenue
 FROM orders
-GROUP BY OrderStatus
-ORDER BY total_orders DESC;
-
--- ============================================
--- 6. Seller Performance
--- ============================================
-
--- Top 5 Sellers by Revenue
-SELECT SellerID,
-       SUM(TotalAmount) AS seller_revenue
-FROM orders
-GROUP BY SellerID
-ORDER BY seller_revenue DESC
+GROUP BY ProductName
+ORDER BY Product_Revenue DESC
 LIMIT 5;
+
+
+-- =====================================================
+-- 8. Top 5 Products by Quantity Sold
+-- =====================================================
+
+SELECT ProductName,
+       SUM(Quantity) AS Total_Quantity_Sold
+FROM orders
+GROUP BY ProductName
+ORDER BY Total_Quantity_Sold DESC
+LIMIT 5;
+
+
+-- =====================================================
+-- 9. Average Order Value
+-- =====================================================
+
+SELECT AVG(TotalAmount) AS Avg_Order_Value
+FROM orders;
+
+
+-- =====================================================
+-- 10. Category with Highest Average Discount
+-- =====================================================
+
+SELECT Category,
+       AVG(Discount) AS Avg_Discount
+FROM orders
+GROUP BY Category
+ORDER BY Avg_Discount DESC;
+
+
+-- =====================================================
+-- 11. Category with Highest Total Tax Collected
+-- =====================================================
+
+SELECT Category,
+       SUM(Tax) AS Total_Tax
+FROM orders
+GROUP BY Category
+ORDER BY Total_Tax DESC;
+
+
+-- =====================================================
+-- 12. Revenue Trend Over Time
+-- =====================================================
+
+SELECT DATE_FORMAT(OrderDate, '%Y-%m') AS Year_Month,
+       SUM(TotalAmount) AS Monthly_Revenue
+FROM orders
+GROUP BY Year_Month
+ORDER BY Year_Month;
+
